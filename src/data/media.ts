@@ -15,7 +15,7 @@ export type MediaVideoEntry = {
  * Tavsiya etilgan fayl nomlari:
  *   public/media/hero.jpg
  *   public/media/author.jpg
- *   public/media/videos/message.mp4
+ *   public/media/videos/message.web.mp4
  *   public/media/videos/message-poster.jpg
  *   public/media/gallery/1.jpg … 6.jpg
  */
@@ -34,7 +34,7 @@ export const MEDIA = {
   },
   /** Asosiy video murojaat — mp4 bo'lsa sahifada o'ynaydi, bo'lmasa Instagram havolasi */
   videoMessage: {
-    mp4: '/media/videos/message.mp4',
+    mp4: '/media/videos/message.web.mp4',
     poster: '/media/videos/message-poster.jpg',
     posterFallback:
       'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
@@ -63,12 +63,12 @@ export const MEDIA = {
     {
       id: 'practice',
       title: 'Amaliyotdan lavha',
-      mp4: '/media/videos/practice.mp4',
+      mp4: '/media/videos/practice.web.mp4',
     },
     {
       id: 'students',
       title: "O'quvchilar natijalari",
-      mp4: '/media/videos/students.mp4',
+      mp4: '/media/videos/students.web.mp4',
     },
   ] as MediaVideoEntry[],
 } as const

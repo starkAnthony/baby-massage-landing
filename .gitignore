@@ -19,3 +19,9 @@ dist-ssr
 # OS
 .DS_Store
 Thumbs.db
+
+# Original video uploads (too large for Vercel). Kept in media-source/ after compression.
+media-source/
+public/media/videos/message.mp4
+public/media/videos/practice.mp4
+public/media/videos/students.mp4
