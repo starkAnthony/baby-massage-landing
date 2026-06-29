@@ -18,6 +18,7 @@ export type MediaVideoEntry = {
  *   public/media/videos/message.web.mp4
  *   public/media/videos/message-poster.jpg
  *   public/media/gallery/1.jpg … 6.jpg
+ *   public/media/certificate-sample.pdf
  */
 export const MEDIA = {
   hero: {
@@ -40,6 +41,11 @@ export const MEDIA = {
       'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80',
     instagramUrl: CONTACT.instagramReel,
     title: 'Shahnoza Soliyevaning video murojaati',
+  },
+  certificate: {
+    src: '/media/certificate-sample.png',
+    pdf: '/media/certificate-sample.pdf',
+    alt: 'Shahnoza Soliyeva Bolalar Massaji Onlayn Akademiyasi sertifikati',
   },
   /** Amaliyot va kurs jarayoni fotolari — 6–8 ta yetarli */
   gallery: [

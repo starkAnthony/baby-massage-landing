@@ -11,6 +11,8 @@ Landing pageda ishlatiladigan foto va videolarni shu papkaga qo'ying.
 | `videos/message.mp4` | Video murojaat (asl nusxa) | 1–3 daqiqalik tanishuv videosi |
 | `videos/message-poster.jpg` | Video poster | Videodan kadr |
 | `gallery/1.jpg` … `6.jpg` | Galereya | Amaliyot, xona, mashqlar |
+| `certificate-sample.pdf` | Sertifikat bo'limi | Asl PDF (sahifada PNG ko'rinadi) |
+| `certificate-sample.png` | Sertifikat bo'limi | Avtomatik: `npm run render:certificate` |
 
 ## Videolarni siqish (Vercel uchun muhim)
 
