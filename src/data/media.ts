@@ -31,7 +31,7 @@ export const MEDIA = {
     src: '/media/author.jpg',
     fallback:
       'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80',
-    alt: 'Shahnoza Soliyeva — reabilitolog va bolalar massaji treneri',
+    alt: 'Shahnoza Soliyeva — amaliyotchi reabilitolog va bolalar massaji treneri',
   },
   /** Asosiy video murojaat — mp4 bo'lsa sahifada o'ynaydi, bo'lmasa Instagram havolasi */
   videoMessage: {
@@ -68,7 +68,7 @@ export const MEDIA = {
   videos: [
     {
       id: 'practice',
-      title: 'Amaliyotdan lavha',
+      title: 'Amaliyotdan lavhalar',
       mp4: '/media/videos/practice.web.mp4',
     },
     {

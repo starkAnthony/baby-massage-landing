@@ -1,6 +1,5 @@
 import { WHY_MASSAGE } from '../data/content'
 import { Section, SectionHeader } from '../components/Section'
-import { CTABlock } from '../components/CTABlock'
 
 export function WhyMassage() {
   return (
@@ -32,7 +31,7 @@ export function WhyMassage() {
         </div>
         <div className="grid grid-cols-2 divide-x divide-y divide-border sm:grid-cols-4 sm:divide-y-0">
           {[
-            { value: '73%', label: 'Ota-onalar massaj xizmatiga qiziqadi' },
+            { value: '73%', label: 'Ota-onalar massaj xizmatiga qiziqish bildiradi' },
             { value: '2.5x', label: "So'nggi 3 yilda talab o'sishi" },
             { value: '85%', label: 'Uy sharoitida xizmat afzal' },
             { value: '0', label: 'Katta investitsiya kerak emas' },
@@ -48,8 +47,6 @@ export function WhyMassage() {
           ))}
         </div>
       </div>
-
-      <CTABlock className="mt-14" />
     </Section>
   )
 }

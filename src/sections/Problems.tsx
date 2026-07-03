@@ -1,7 +1,6 @@
 import { X } from 'lucide-react'
 import { PROBLEMS } from '../data/content'
 import { Section, SectionHeader } from '../components/Section'
-import { CTABlock } from '../components/CTABlock'
 
 export function Problems() {
   return (
@@ -33,12 +32,9 @@ export function Problems() {
           Shu sababli biz ushbu akademiyani yaratdik.
         </p>
         <p className="relative mx-auto mt-4 max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
-          Sizning muammolaringizni tushunamiz va ularni hal qilish uchun aniq yo'l
-          xaritasini taqdim etamiz.
+          Sizning muammolaringizni tushunamiz va ularni hal qilish uchun aniq yo'l xaritasini taqdim etamiz.
         </p>
       </div>
-
-      <CTABlock className="mt-12" />
     </Section>
   )
 }

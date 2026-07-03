@@ -7,7 +7,7 @@ export function StickyCTA() {
       <Button
         className="w-full"
         trackLabel="sticky_enroll"
-        onClick={scrollToForm}
+        onClick={() => scrollToForm()}
       >
         Kursga yozilish
       </Button>

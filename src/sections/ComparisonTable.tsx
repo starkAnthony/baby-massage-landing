@@ -29,7 +29,7 @@ export function ComparisonTable() {
             <thead>
               <tr className="border-b border-border bg-surface">
                 <th className="p-4 text-left text-sm font-bold text-text">Funksiya</th>
-                <th className="p-4 text-center text-sm font-bold text-text-muted">Start</th>
+                <th className="p-4 text-center text-sm font-bold text-text-muted">Standart</th>
                 <th className="bg-primary-light/60 p-4 text-center">
                   <span className="text-sm font-bold text-primary">Expert</span>
                   <span className="mt-0.5 block text-[10px] font-semibold text-cta uppercase">
@@ -49,7 +49,7 @@ export function ComparisonTable() {
                 >
                   <td className="p-4 text-sm font-medium text-text">{row.name}</td>
                   <td className="p-4 text-center">
-                    <CellValue value={row.start} />
+                    <CellValue value={row.standart} />
                   </td>
                   <td className="bg-primary-light/30 p-4 text-center">
                     <CellValue value={row.expert} />

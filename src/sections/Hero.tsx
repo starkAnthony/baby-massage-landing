@@ -18,7 +18,7 @@ export function Hero() {
 
             <h1 className="text-[1.75rem] leading-[1.2] sm:text-4xl lg:text-[2.75rem]">
               6 hafta ichida{' '}
-              <span className="text-gradient">bolalar massaji</span> bo'yicha talab
+              <span className="text-gradient">bolalar massaji</span> bo'yicha talabi
               yuqori bo'lgan kasbni egallang
             </h1>
 
@@ -45,7 +45,7 @@ export function Hero() {
             </div>
 
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Button trackLabel="hero_enroll" onClick={scrollToForm}>
+              <Button trackLabel="hero_enroll" onClick={() => scrollToForm()}>
                 Kursga yozilish
                 <ArrowRight className="h-4 w-4" />
               </Button>
@@ -57,21 +57,6 @@ export function Hero() {
                 Dastur bilan tanishish
               </Button>
             </div>
-
-            <div className="mt-8 flex items-center gap-3 text-sm text-text-muted">
-              <div className="flex -space-x-2">
-                {[1, 2, 3].map((i) => (
-                  <div
-                    key={i}
-                    className="h-8 w-8 rounded-full border-2 border-white bg-primary-light"
-                  />
-                ))}
-              </div>
-              <span>
-                O'zbekiston va chet eldan <strong className="text-text">minglab</strong>{' '}
-                o'quvchilar allaqachon o'qigan
-              </span>
-            </div>
           </div>
 
           <div className="order-1 lg:order-2">
@@ -80,7 +65,7 @@ export function Hero() {
                 src={MEDIA.hero.src}
                 fallback={MEDIA.hero.fallback}
                 alt={MEDIA.hero.alt}
-                variant="photo"
+                variant="hero"
                 fit="cover"
                 className="card card-shadow-lg"
                 loading="eager"

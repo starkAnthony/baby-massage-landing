@@ -1,7 +1,6 @@
 import { Baby, Heart, Stethoscope, Hand, Sparkles } from 'lucide-react'
 import { AUDIENCE } from '../data/content'
 import { Section, SectionHeader } from '../components/Section'
-import { CTABlock } from '../components/CTABlock'
 
 const iconMap = {
   baby: Baby,
@@ -36,8 +35,6 @@ export function Audience() {
           )
         })}
       </div>
-
-      <CTABlock className="mt-14" />
     </Section>
   )
 }

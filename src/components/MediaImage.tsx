@@ -20,12 +20,13 @@ export function MediaImage({ src, fallback, alt, ...props }: MediaImageProps) {
   )
 }
 
-type FrameVariant = 'portrait' | 'photo' | 'landscape' | 'square' | 'auto'
+type FrameVariant = 'portrait' | 'photo' | 'hero' | 'landscape' | 'square' | 'auto'
 type FitMode = 'contain' | 'cover'
 
 const frameVariants: Record<FrameVariant, string> = {
   portrait: 'aspect-[9/16] w-full max-h-[min(75vh,640px)]',
   photo: 'aspect-[3/4] w-full max-h-[min(70vh,520px)]',
+  hero: 'aspect-[3/4] w-full max-h-[min(78vh,600px)]',
   landscape: 'aspect-video w-full max-h-[420px]',
   square: 'aspect-square w-full max-h-[360px]',
   auto: 'w-full min-h-[200px] max-h-[min(75vh,640px)]',

@@ -61,7 +61,7 @@ export function AboutAuthor() {
             <p className="text-sm leading-relaxed text-text-muted">
               Har bir ayolga bolalar massaji orqali mustaqil daromad topish va
               farzandining sog'lig'ini asrash imkoniyatini berish. Malakali
-              mutaxassislar tayyorlash orqali minglab oilalarga yordam berish.
+              mutaxassislarni tayyorlash orqali minglab oilalarga yordam berish.
             </p>
           </div>
         </div>

@@ -115,7 +115,7 @@ export function MediaShowcase() {
       <SectionHeader
         eyebrow="Video"
         title="Shahnoza Soliyevadan qisqacha"
-        subtitle="Akademiya, dastur va natijalar haqida qisqacha tanishuv"
+        subtitle="Akademiya, dastur va natijalar bilan qisqacha tanishing"
       />
 
       <div className="mx-auto mb-14 max-w-3xl">

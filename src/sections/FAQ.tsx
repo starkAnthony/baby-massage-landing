@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { FAQ_ITEMS } from '../data/content'
 import { Section, SectionHeader } from '../components/Section'
-import { CTABlock } from '../components/CTABlock'
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
@@ -12,7 +11,7 @@ export function FAQ() {
       <SectionHeader
         eyebrow="FAQ"
         title="Ko'p beriladigan savollar"
-        subtitle="Javob topa olmasangiz, bepul konsultatsiya oling"
+        subtitle="Savolingiz bo'lsa, pastdagi forma orqali biz bilan bog'laning"
       />
 
       <div className="mx-auto max-w-3xl space-y-2">
@@ -62,8 +61,6 @@ export function FAQ() {
           )
         })}
       </div>
-
-      <CTABlock className="mt-14" />
     </Section>
   )
 }

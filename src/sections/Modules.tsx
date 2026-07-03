@@ -2,17 +2,16 @@ import { CheckCircle, BookOpen } from 'lucide-react'
 import { MODULES } from '../data/content'
 import { Section, SectionHeader } from '../components/Section'
 import { AccordionItem } from '../components/Accordion'
-import { CTABlock } from '../components/CTABlock'
 
 export function Modules() {
-  const totalLessons = MODULES.reduce((sum, m) => sum + m.lessonsCount, 0)
+  const totalTopics = MODULES.reduce((sum, m) => sum + m.lessonsCount, 0)
 
   return (
     <Section id="modules" altBg>
       <SectionHeader
         eyebrow="Dastur"
         title="Kurs davomida nimalarni o'rganasiz?"
-        subtitle={`3 ta modul, ${totalLessons}+ video dars — har biri aniq natija va uy vazifasi bilan`}
+        subtitle={`3 ta modul, ${totalTopics}+ mavzu — har biri aniq natija va uy vazifasi bilan`}
       />
 
       <div className="space-y-3">
@@ -27,7 +26,7 @@ export function Modules() {
             </p>
 
             <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-primary">
-              {mod.lessonsCount} ta dars mavzulari
+              {mod.lessonsCount} ta mavzu
             </p>
             <div className="flex flex-wrap gap-2">
               {mod.topics.map((topic) => (
@@ -58,8 +57,6 @@ export function Modules() {
           </AccordionItem>
         ))}
       </div>
-
-      <CTABlock className="mt-14" />
     </Section>
   )
 }

@@ -9,7 +9,7 @@ export function Certificate() {
       <SectionHeader
         eyebrow="Sertifikat"
         title="Rasmiy sertifikat"
-        subtitle="Yakuniy imtihondan muvaffaqiyatli o'tgan o'quvchilarga taqdim etiladi"
+        subtitle="Yakuniy imtihondan muvaffaqiyatli o'tgan o'quvchilarga beriladi"
       />
 
       <div className="mx-auto max-w-3xl">

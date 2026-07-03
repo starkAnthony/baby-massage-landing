@@ -46,7 +46,7 @@ function Header() {
         <Button
           size="sm"
           trackLabel="header_enroll"
-          onClick={scrollToForm}
+          onClick={() => scrollToForm()}
           className="hidden sm:inline-flex"
         >
           Kursga yozilish

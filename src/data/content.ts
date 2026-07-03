@@ -18,13 +18,13 @@ export const CONTACT = {
 
 export const STATS = [
   { value: '17', label: 'yillik tajriba' },
-  { value: '30 000+', label: 'bolaga rivojlanishida yordam bergan' },
+  { value: '30 000+', label: 'bolalarning rivojlanishiga yordam bergan' },
   { value: '1000+', label: "o'quvchilar" },
 ] as const
 
 export const WHY_MASSAGE = [
   'Rivojlanishida kechikish kuzatilayotgan bolalar soni ortmoqda',
-  'Ota-onalar malakali mutaxassis izlayapti',
+  'Ota-onalar malakali mutaxassis qidirmoqda',
   'Uy sharoitida xizmat ko\'rsatish imkoniyati',
   'Katta investitsiya talab qilmaydigan kasb',
   'Erkin ish grafigi',
@@ -33,8 +33,8 @@ export const WHY_MASSAGE = [
 export const PROBLEMS = [
   'Kasbingiz yo\'q',
   'Daromadingiz yetarli emas',
-  'Farzandingiz sabab ishga chiqa olmaysiz',
-  'Internetdagi videolar chalkashtirib yuborgan',
+  'Farzandingiz tufayli ishga chiqa olmaysiz',
+  'Internetdagi videolar sizni chalkashtirgan',
   'Mijoz topishni bilmaysiz',
   'O\'zingizga ishonmaysiz',
 ] as const
@@ -47,7 +47,7 @@ export const AUTHOR_ROLES = [
 
 export const AUTHOR_TIMELINE = [
   { year: '2008', title: 'Reabilitolog sifatida faoliyat boshlandi' },
-  { year: '2012', title: 'Bolalar massaji va reabilitatsiyaga ixtisoslashdi' },
+  { year: '2012', title: 'Bolalar massaji va reabilitatsiyasiga ixtisoslashdi' },
   { year: '2016', title: 'Osteopatiya va nevrologiya yo\'nalishlarida malaka oshirdi' },
   { year: '2020', title: '1000+ o\'quvchini professional darajaga yetkazdi' },
   { year: '2024', title: 'Onlayn akademiyani tashkil etdi' },
@@ -96,7 +96,7 @@ export const MODULES = [
       'Tayyorgarlik va xavfsizlik qoidalari',
     ],
     homework:
-      'Rivojlanish holatini kuzatish, massaj muhitini tayyorlash, raxit belgilarini aniqlash bo\'yicha test',
+      'Rivojlanish holatini kuzatish, massaj muhitini tayyorlash va raxit belgilarini aniqlash bo\'yicha test',
     result: 'Bolani baholashni va xavfsiz massaj qilishni o\'rganasiz.',
     lessonsCount: 18,
   },
@@ -114,7 +114,7 @@ export const MODULES = [
       'Imkoniyati cheklangan bolalar bilan ishlash',
     ],
     homework:
-      '3 ta klinik holat bo\'yicha tashxis, massaj algoritmi, 5 daqiqalik fitbol mashg\'uloti videosi',
+      '3 ta klinik holat bo\'yicha tahlil, massaj algoritmi va 5 daqiqalik fitbol mashg\'uloti videosi',
     result: 'Turli tashxislarda qanday yondashish kerakligini tushunasiz.',
     lessonsCount: 33,
   },
@@ -124,7 +124,7 @@ export const MODULES = [
     description:
       'Professional massaj amaliyoti, fizioterapiya usullari va mijozlar bilan ishlash tizimi.',
     topics: [
-      'Massaj qarshi ko\'rsatmalar',
+      'Massajga qarshi ko\'rsatmalar',
       'Elektroforez va parafin terapiya',
       'Kompleks reabilitatsiya dasturi',
       'Konsultatsiya va mijoz kartasi',
@@ -139,7 +139,7 @@ export const MODULES = [
 ] as const
 
 export const LEARNING_FLOW = [
-  { step: 'Video dars', icon: 'play', detail: 'Haftasiga 3 marta' },
+  { step: 'Video mavzu', icon: 'play', detail: 'Haftasiga 3 marta' },
   { step: 'Uy vazifasi', icon: 'book', detail: 'Har modul yakunida' },
   { step: 'Tekshirish', icon: 'check', detail: 'Kurator nazorati' },
   { step: 'Jonli sessiya', icon: 'user', detail: 'EXPERT va VIP' },
@@ -149,50 +149,63 @@ export const LEARNING_FLOW = [
 
 export const PRICING = [
   {
-    id: 'start',
-    name: 'START',
+    id: 'standart',
+    name: 'STANDART',
     price: '1 490 000',
     currency: "so'm",
     popular: false,
     spots: 25,
     features: [
-      'Barcha videodarslar (68+ dars)',
-      'Uyga vazifa — modul testlar (5 tasi tekshiriladi)',
-      '12 oy davomida kursga kirish',
-      'Yopiq Telegram guruhi',
+      'Barcha mavzular (video formatda)',
+      'Uy vazifasi: modul vazifalari (tasodifiy 5 tasi tekshiriladi)',
+      '6 oy davomida kurs kanaliga kirish huquqi',
     ],
+    bonusLabel: 'Bonus videolar',
     bonuses: [
       'Ayollar uchun sog\'lomlashtiruvchi massaj',
-      'Karrikson massaji',
+      'Korreksion limfodrenaj massaji amaliyoti',
       'Yuz lifting massaji',
-      'Sunnatga muvofiq sog\'lom ovqatlanish',
-      '2 oyda 6–10 kg vazn tashlash texnikalari',
+      'Sunnatga muvofiq sog\'lom ovqatlanish sirlari',
+      '2 oyda 6–10 kg vazn tashlash bo\'yicha amaliyotda qo\'llanilgan texnikalar',
     ],
-    result: 'Bolalar massaji asoslarini o\'rganib, uy sharoitida ishlaysiz',
+    results: [
+      'Bolalar massajining asosiy texnikalarini o\'rganasiz',
+      'Uy sharoitida bemalol ishlay olasiz',
+      'Bolaning rivojlanish bosqichlarini tushunib olasiz',
+    ],
   },
   {
     id: 'expert',
     name: 'EXPERT',
+    tagline: 'Kasb egallash va birinchi mijozlarga qadar',
     price: '3 490 000',
     currency: "so'm",
     popular: true,
+    popularBadge: 'ENG KO\'P TANLANADIGAN TARIF',
     spots: 25,
     features: [
-      'START tarifidagi barcha imkoniyatlar',
-      'Haftalik jonli sessiyada kurator yordami',
-      'Har modul yakunida video hisobotlarni tahlil qilish',
-      '18 oy davomida kursga kirish',
-      'Yakuniy imtihon va sertifikat',
+      'STANDART tarifidagi barcha imkoniyatlar',
+      'Haftalik jonli sessiyalarda kurator yordami',
+      '18 oy davomida kursga kirish imkoniyati',
+      'Yakuniy imtihon',
+      'Sertifikat',
     ],
+    bonusLabel: 'Bonus darsliklar',
     bonuses: [
-      'Birinchi mijozlarni topish qo\'llanmasi',
-      'Xizmat narxlarini shakllantirish bo\'yicha tavsiyalar',
+      'Birinchi mijozlarni topish va ular bilan ishlash bo\'yicha qo\'llanma videosi',
+      'Xizmat narxlarini shakllantirish bo\'yicha ma\'lumotlar',
+      'Ish jarayonida ishlatiladigan mahsulotlarni to\'g\'ri tanlash va qayerdan olish haqidagi ma\'lumotlar',
     ],
-    result: 'Professional darajada massaj qilib, birinchi mijozlaringizni topasiz',
+    results: [
+      'Bolalar massajini professional darajada bajara olasiz',
+      'Birinchi mijozlar bilan ishlashga tayyor bo\'lasiz',
+      'Qo\'shimcha daromad topishni boshlaysiz',
+    ],
   },
   {
     id: 'vip',
     name: 'VIP MENTOR',
+    tagline: 'Shahnoza Soliyeva bilan shaxsiy mentorlik',
     price: '5 990 000',
     currency: "so'm",
     popular: false,
@@ -200,38 +213,43 @@ export const PRICING = [
     spots: 10,
     features: [
       'EXPERT tarifidagi barcha imkoniyatlar',
-      'Shahnoza Soliyeva bilan 5 ta individual uchrashuv (2 soatdan)',
-      'Kurs davomida shaxsiy mentorlik — yopiq savol-javob guruhi',
-      'Kursga umrbod bepul kirish',
-      '3 oylik qo\'llab-quvvatlash xizmati',
-      'O\'quv qo\'llanmalari',
+      'Mualliflik o\'quv qo\'llanmasi — 17 yillik tajribaga asoslangan kitob',
+      'Shahnoza Soliyeva bilan real simptomli bolalarda (modellarda) 5 kunlik amaliyot darslari',
+      'Umrbod davomida kursga bepul kirish',
+      '3 oylik qo\'llab-quvvatlash xizmati (yopiq savol-javob guruhi)',
     ],
+    bonusLabel: 'Bonuslar',
     bonuses: [
-      'Instagramni to\'g\'ri yuritish darsligi + 30 kunlik kontent-reja',
+      'Instagramni to\'g\'ri yuritish bo\'yicha darslik va 30 kunlik kontent-reja',
       'Tayyor sotuv skriptlari',
       'Ish boshlash uchun hujjatlar paketi',
+      'Topilgan mablag\'ni to\'g\'ri investitsiya qilish',
     ],
-    result: 'Shahnoza Soliyevadan individual tajriba va kuchli shaxsiy brend',
+    results: [
+      'Mutaxassis sifatida tezroq rivojlanasiz',
+      'Shahnoza Soliyevadan individual tajriba olasiz',
+      'O\'z mijozlar bazangizni shakllantirasiz',
+      'Kuchli shaxsiy brend yaratishni boshlaysiz',
+    ],
   },
 ] as const
 
 export const COMPARISON_FEATURES = [
-  { name: 'Videodarslar (68+)', start: true, expert: true, vip: true },
-  { name: 'Uy vazifasi va modul testlar', start: true, expert: true, vip: true },
-  { name: 'Haftalik jonli kurator sessiyasi', start: false, expert: true, vip: true },
-  { name: 'Video hisobot tahlili', start: false, expert: true, vip: true },
-  { name: 'Shahnoza Soliyeva bilan individual uchrashuv', start: false, expert: false, vip: '5 ta' },
-  { name: 'Shaxsiy mentorlik (yopiq guruh)', start: false, expert: false, vip: true },
-  { name: 'Yakuniy imtihon va sertifikat', start: false, expert: true, vip: true },
-  { name: 'Bonus darsliklar', start: '5 ta', expert: '7 ta', vip: 'Barchasi' },
-  { name: 'Kursga kirish muddati', start: '12 oy', expert: '18 oy', vip: 'Umrbod' },
-  { name: 'Qo\'llab-quvvatlash', start: 'Guruh', expert: 'Kurator', vip: '3 oy VIP' },
-  { name: 'Joylar soni', start: '25', expert: '25', vip: '10' },
+  { name: 'Barcha mavzular', standart: true, expert: true, vip: true },
+  { name: 'Modul vazifalari (tekshiruv)', standart: '5 ta', expert: true, vip: true },
+  { name: 'Haftalik jonli kurator sessiyasi', standart: false, expert: true, vip: true },
+  { name: 'Yakuniy imtihon va sertifikat', standart: false, expert: true, vip: true },
+  { name: 'Shahnoza bilan amaliyot darslari', standart: false, expert: false, vip: '5 kunlik' },
+  { name: 'Mualliflik o\'quv qo\'llanmasi', standart: false, expert: false, vip: true },
+  { name: 'Bonus darsliklar', standart: '5 ta video', expert: '3 ta', vip: 'Barchasi' },
+  { name: 'Kursga kirish muddati', standart: '6 oy', expert: '18 oy', vip: 'Umrbodlik' },
+  { name: 'Qo\'llab-quvvatlash', standart: 'Guruh', expert: 'Kurator', vip: '3 oy VIP' },
+  { name: 'Joylar soni', standart: '25', expert: '25', vip: '10' },
 ] as const
 
 export const BONUSES = [
-  { title: 'Ayollar massaji', icon: 'flower' },
-  { title: 'Karrikson massaji', icon: 'hand' },
+  { title: 'Ayollar uchun massaj', icon: 'flower' },
+  { title: 'Korreksion limfodrenaj', icon: 'hand' },
   { title: 'Yuz lifting massaji', icon: 'sparkle' },
   { title: 'Sog\'lom ovqatlanish', icon: 'leaf' },
   { title: 'Vazn tashlash metodikasi', icon: 'scale' },
@@ -246,17 +264,17 @@ export const FAQ_ITEMS = [
   {
     question: 'Tibbiy bilim kerakmi?',
     answer:
-      'Yo\'q. Kurs 0 dan boshlab o\'rgatiladi. Har qanday kasb egallari va onalar o\'qishi mumkin. Kurs kasallikka tashxis qo\'yishni emas, mutaxassis nazoratida to\'g\'ri yondashuv va amaliy usullarni o\'rgatadi.',
+      'Yo\'q. Kurs noldan boshlab o\'rgatiladi. Har qanday kasb egallari va onalar o\'qishi mumkin. Kurs kasallikka tashxis qo\'yishni emas, balki mutaxassis nazoratida to\'g\'ri yondashuv va amaliy usullarni o\'rgatadi.',
   },
   {
-    question: 'Video darslar qoladimi?',
+    question: 'Kurs materiallari qolib turadimi?',
     answer:
-      'Ha. START — 12 oy, EXPERT — 18 oy, VIP MENTOR — umrbod kirish imkoniyati mavjud. Darslarni istalgan vaqtda qayta ko\'rishingiz mumkin.',
+      'Ha. STANDART — 6 oy, EXPERT — 18 oy, VIP MENTOR — umrbodlik kirish imkoniyati mavjud. Mavzularni istalgan vaqtda qayta ko\'rishingiz mumkin.',
   },
   {
     question: 'Kurs qancha davom etadi?',
     answer:
-      'Kurs davomiyligi 1,5 oy. Haftasiga 3 marta darsliklar yuboriladi. Darslar maxsus onlayn o\'quvchilar uchun yozilgan va yopiq Telegram guruhda o\'tkaziladi.',
+      'Kurs davomiyligi 1,5 oy. Haftasiga 3 marta yangi mavzular yuboriladi. Mavzular maxsus onlayn o\'quvchilar uchun yozilgan bo\'lib, yopiq Telegram guruhi orqali taqdim etiladi.',
   },
   {
     question: 'Bo\'lib to\'lash mumkinmi?',
@@ -275,7 +293,7 @@ export const FAQ_ITEMS = [
   {
     question: 'Amaliyot bormi?',
     answer:
-      'Ha. Har bir modul yakunida uy vazifalari beriladi. EXPERT tarifida video hisobotlar tahlil qilinadi. VIP tarifida Shahnoza Soliyeva bilan 5 ta individual amaliyot darsligi (2 soatdan) mavjud.',
+      'Ha. Har bir modul yakunida uy vazifalari beriladi. VIP tarifida Shahnoza Soliyeva bilan real simptomli bolalarda 5 kunlik amaliyot darslari mavjud.',
   },
   {
     question: 'Internetdan o\'rganib bo\'lmaydimi?',
@@ -285,12 +303,12 @@ export const FAQ_ITEMS = [
   {
     question: 'Qaysi tarifni tanlash kerak?',
     answer:
-      'Kasb egallash va birinchi mijozlargacha — EXPERT tarifini tavsiya qilamiz (eng ko\'p tanlanadi). Tezroq rivojlanish va shaxsiy mentorlik uchun — VIP MENTOR.',
+      'Kasb egallash va birinchi mijozlarga qadar — EXPERT tarifini tavsiya qilamiz (eng ko\'p tanlanadi). Tezroq rivojlanish va shaxsiy mentorlik uchun — VIP MENTOR.',
   },
   {
     question: 'Guruhda nechta o\'quvchi bo\'ladi?',
     answer:
-      'Har bir tarif uchun joylar cheklangan: START va EXPERT — 25 tadan, VIP MENTOR — 10 ta joy.',
+      'Har bir tarif uchun joylar cheklangan: STANDART va EXPERT — 25 tadan, VIP MENTOR — 10 ta joy.',
   },
   {
     question: 'Telefondan o\'qish mumkinmi?',
@@ -301,20 +319,11 @@ export const FAQ_ITEMS = [
     answer: 'Ha. Kurs to\'liq onlayn — O\'zbekistonning istalgan nuqtasidan o\'qishingiz mumkin.',
   },
   {
-    question: 'Kurs kasallikni davolaydimi?',
-    answer:
-      'Yo\'q. Kurs kasallikni davolashni emas, mutaxassis nazoratida massaj va reabilitatsiyaning o\'rni, to\'g\'ri yondashuv va amaliy usullarni o\'rgatadi. Aniq tashxisni faqat shifokor qo\'yadi.',
-  },
-  {
     question: 'Nega aynan Shahnoza Soliyevaning kursi?',
     answer:
-      '17 yillik tajriba, 30 000+ bolalar bilan ishlash va amaliyotchilik — bu internetdagi nazariy ma\'lumot emas, ko\'p yillik haqiqiy tajriba.',
+      '17 yillik tajriba, 30 000 dan ortiq bolalar bilan ishlash va amaliyot tajribasi — bu internetdagi nazariy ma\'lumot emas, balki ko\'p yillik haqiqiy tajriba.',
   },
-  {
-    question: 'Bepul konsultatsiya bormi?',
-    answer:
-      'Ha. Kursga yozilishdan oldin bepul konsultatsiya olishingiz mumkin — formani to\'ldiring yoki Telegram orqali yozing.',
-  },
+
 ] as const
 
 export const COURSE_GOALS = [

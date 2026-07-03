@@ -13,7 +13,6 @@ import {
 } from 'lucide-react'
 import { BONUSES } from '../data/content'
 import { Section, SectionHeader } from '../components/Section'
-import { CTABlock } from '../components/CTABlock'
 
 const iconMap = {
   flower: Flower2,
@@ -34,7 +33,7 @@ export function Bonuses() {
       <SectionHeader
         eyebrow="Sovg'alar"
         title="Bonuslar"
-        subtitle="EXPERT va VIP tariflarida qo'shimcha kurslar"
+        subtitle="EXPERT va VIP tariflarida beriladigan qo'shimcha materiallar"
       />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
@@ -56,8 +55,6 @@ export function Bonuses() {
           )
         })}
       </div>
-
-      <CTABlock className="mt-14" />
     </Section>
   )
 }

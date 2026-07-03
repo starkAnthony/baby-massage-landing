@@ -1,7 +1,8 @@
-import { useState, type FormEvent } from 'react'
-import { Phone, Send, Instagram, MessageCircle } from 'lucide-react'
-import { CONTACT, COURSE_GOALS, UZBEK_REGIONS } from '../data/content'
-import { trackCTA } from '../utils/analytics'
+import { useEffect, useState, type FormEvent } from 'react'
+import { ChevronDown, Phone, Send, Instagram, MessageCircle } from 'lucide-react'
+import { CONTACT, COURSE_GOALS, PRICING, UZBEK_REGIONS } from '../data/content'
+import { SELECTED_TARIF_KEY, TARIF_SELECTED_EVENT, trackCTA } from '../utils/analytics'
+import { submitLead } from '../utils/submitLead'
 import { Section, SectionHeader } from '../components/Section'
 import { Button } from '../components/Button'
 
@@ -10,10 +11,28 @@ interface FormData {
   phone: string
   region: string
   goal: string
+  tarif: string
 }
 
 const inputClass =
   'w-full rounded-xl border border-border bg-surface px-4 py-3.5 text-sm outline-none transition placeholder:text-text-muted/50 focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/15'
+
+function tarifCardClass(planId: string, selected: boolean) {
+  if (!selected) return 'border-border bg-white hover:border-primary/30'
+
+  const plan = PRICING.find((p) => p.id === planId)
+  if (plan && 'isVip' in plan && plan.isVip) {
+    return 'border-gold bg-gold-light/50 font-semibold text-gold shadow-sm'
+  }
+  if (plan?.popular) {
+    return 'border-primary bg-cta-light font-semibold text-cta shadow-sm'
+  }
+  return 'border-cta bg-cta-light font-medium text-cta shadow-sm'
+}
+
+function readSavedTarif() {
+  return sessionStorage.getItem(SELECTED_TARIF_KEY) ?? ''
+}
 
 export function LeadForm() {
   const [form, setForm] = useState<FormData>({
@@ -21,18 +40,43 @@ export function LeadForm() {
     phone: '',
     region: '',
     goal: '',
+    tarif: readSavedTarif(),
   })
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const syncTarif = (tarifId: string) => {
+      setForm((prev) => ({ ...prev, tarif: tarifId }))
+    }
+
+    const onTarifSelected = (event: Event) => {
+      const tarifId = (event as CustomEvent<string>).detail
+      if (tarifId) syncTarif(tarifId)
+    }
+
+    window.addEventListener(TARIF_SELECTED_EVENT, onTarifSelected)
+    return () => window.removeEventListener(TARIF_SELECTED_EVENT, onTarifSelected)
+  }, [])
+
+  const setTarif = (tarifId: string) => {
+    sessionStorage.setItem(SELECTED_TARIF_KEY, tarifId)
+    setForm((prev) => ({ ...prev, tarif: tarifId }))
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
-    trackCTA('form_submit', form.goal)
+    setError(null)
+    trackCTA('form_submit', `${form.goal}_${form.tarif}`)
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await submitLead(form)
+      sessionStorage.removeItem(SELECTED_TARIF_KEY)
       setSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Xatolik yuz berdi')
     } finally {
       setLoading(false)
     }
@@ -61,12 +105,53 @@ export function LeadForm() {
           align="left"
           eyebrow="Ro'yxatdan o'tish"
           title="Bugun yangi kasb sari birinchi qadamni qo'ying"
-          subtitle="Shahnoza Soliyevaning mualliflik akademiyasiga qo'shiling. Formani to'ldiring — menejerimiz 24 soat ichida bog'lanadi."
+          subtitle="Shahnoza Soliyevaning mualliflik akademiyasiga qo'shiling. Formani to'ldiring — menejerimiz 24 soat ichida siz bilan bog'lanadi."
           className="mb-0 sm:mb-0"
         />
 
         <form onSubmit={handleSubmit} className="card p-6 card-shadow-lg sm:p-8">
           <div className="space-y-4">
+            <div>
+              <p className="mb-2 text-sm font-medium text-text">Tarif</p>
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
+                {PRICING.map((plan) => {
+                  const selected = form.tarif === plan.id
+                  const isVip = 'isVip' in plan && plan.isVip
+
+                  return (
+                    <label
+                      key={plan.id}
+                      className={`flex cursor-pointer flex-col rounded-xl border p-3 text-center transition ${tarifCardClass(plan.id, selected)}`}
+                    >
+                      <input
+                        type="radio"
+                        name="tarif"
+                        value={plan.id}
+                        required
+                        checked={selected}
+                        onChange={() => setTarif(plan.id)}
+                        className="sr-only"
+                      />
+                      <span
+                        className={`font-display text-xs font-extrabold tracking-wide sm:text-sm ${
+                          selected && isVip ? 'text-gold' : selected ? 'text-cta' : 'text-primary'
+                        }`}
+                      >
+                        {plan.name}
+                      </span>
+                      <span
+                        className={`mt-1 text-[11px] leading-tight ${
+                          selected ? 'text-inherit opacity-90' : 'text-text-muted'
+                        }`}
+                      >
+                        {plan.price} {plan.currency}
+                      </span>
+                    </label>
+                  )
+                })}
+              </div>
+            </div>
+
             <div>
               <label htmlFor="name" className="mb-2 block text-sm font-medium text-text">
                 Ism
@@ -101,20 +186,26 @@ export function LeadForm() {
               <label htmlFor="region" className="mb-2 block text-sm font-medium text-text">
                 Viloyat
               </label>
-              <select
-                id="region"
-                required
-                value={form.region}
-                onChange={(e) => setForm({ ...form, region: e.target.value })}
-                className={inputClass}
-              >
-                <option value="">Viloyatni tanlang</option>
-                {UZBEK_REGIONS.map((r) => (
-                  <option key={r} value={r}>
-                    {r}
-                  </option>
-                ))}
-              </select>
+              <div className="relative">
+                <select
+                  id="region"
+                  required
+                  value={form.region}
+                  onChange={(e) => setForm({ ...form, region: e.target.value })}
+                  className={`${inputClass} appearance-none pr-10`}
+                >
+                  <option value="">Viloyatni tanlang</option>
+                  {UZBEK_REGIONS.map((r) => (
+                    <option key={r} value={r}>
+                      {r}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown
+                  className="pointer-events-none absolute top-1/2 right-3 h-4 w-4 -translate-y-1/2 text-text-muted"
+                  aria-hidden
+                />
+              </div>
             </div>
 
             <div>
@@ -144,6 +235,12 @@ export function LeadForm() {
               </div>
             </div>
           </div>
+
+          {error && (
+            <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
+            </p>
+          )}
 
           <Button
             type="submit"
