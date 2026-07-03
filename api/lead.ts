@@ -166,12 +166,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const payload = validatePayload(req.body)
   if (!payload) {
-    return res.status(400).json({ error: 'Invalid form data' })
+    return res.status(400).json({
+      error: 'Forma to\'liq to\'ldirilmagan',
+      code: 'INVALID_FORM',
+    })
   }
 
   if (!getAmoConfig()) {
     return res.status(503).json({
-      error: 'CRM is not configured yet',
+      error: 'CRM hali ulanmagan',
       code: 'CRM_NOT_CONFIGURED',
     })
   }
@@ -184,14 +187,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (message === 'CRM_NOT_CONFIGURED') {
       return res.status(503).json({
-        error: 'CRM is not configured yet',
+        error: 'CRM hali ulanmagan',
         code: 'CRM_NOT_CONFIGURED',
       })
     }
 
     console.error('AmoCRM lead error:', message)
     return res.status(502).json({
-      error: 'Failed to send lead to CRM',
+      error: 'Arizani CRM ga yuborib bo\'lmadi',
       code: 'CRM_SEND_FAILED',
     })
   }

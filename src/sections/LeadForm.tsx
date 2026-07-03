@@ -2,6 +2,7 @@ import { useEffect, useState, type FormEvent } from 'react'
 import { ChevronDown, Phone, Send, Instagram, MessageCircle } from 'lucide-react'
 import { CONTACT, COURSE_GOALS, PRICING, UZBEK_REGIONS } from '../data/content'
 import { SELECTED_TARIF_KEY, TARIF_SELECTED_EVENT, trackCTA } from '../utils/analytics'
+import { validateLeadForm } from '../utils/leadFormValidation'
 import { submitLead } from '../utils/submitLead'
 import { Section, SectionHeader } from '../components/Section'
 import { Button } from '../components/Button'
@@ -67,8 +68,15 @@ export function LeadForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    setLoading(true)
     setError(null)
+
+    const validationError = validateLeadForm(form)
+    if (validationError) {
+      setError(validationError)
+      return
+    }
+
+    setLoading(true)
     trackCTA('form_submit', `${form.goal}_${form.tarif}`)
 
     try {
@@ -109,7 +117,13 @@ export function LeadForm() {
           className="mb-0 sm:mb-0"
         />
 
-        <form onSubmit={handleSubmit} className="card p-6 card-shadow-lg sm:p-8">
+        <form onSubmit={handleSubmit} noValidate className="card p-6 card-shadow-lg sm:p-8">
+          {error && (
+            <p className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              {error}
+            </p>
+          )}
+
           <div className="space-y-4">
             <div>
               <p className="mb-2 text-sm font-medium text-text">Tarif</p>
@@ -127,7 +141,6 @@ export function LeadForm() {
                         type="radio"
                         name="tarif"
                         value={plan.id}
-                        required
                         checked={selected}
                         onChange={() => setTarif(plan.id)}
                         className="sr-only"
@@ -159,11 +172,11 @@ export function LeadForm() {
               <input
                 id="name"
                 type="text"
-                required
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 className={inputClass}
                 placeholder="Ismingiz"
+                autoComplete="name"
               />
             </div>
 
@@ -174,11 +187,11 @@ export function LeadForm() {
               <input
                 id="phone"
                 type="tel"
-                required
                 value={form.phone}
                 onChange={(e) => setForm({ ...form, phone: e.target.value })}
                 className={inputClass}
                 placeholder="+998 90 123 45 67"
+                autoComplete="tel"
               />
             </div>
 
@@ -189,7 +202,6 @@ export function LeadForm() {
               <div className="relative">
                 <select
                   id="region"
-                  required
                   value={form.region}
                   onChange={(e) => setForm({ ...form, region: e.target.value })}
                   className={`${inputClass} appearance-none pr-10`}
@@ -224,7 +236,6 @@ export function LeadForm() {
                       type="radio"
                       name="goal"
                       value={goal}
-                      required
                       checked={form.goal === goal}
                       onChange={(e) => setForm({ ...form, goal: e.target.value })}
                       className="accent-cta"
@@ -235,12 +246,6 @@ export function LeadForm() {
               </div>
             </div>
           </div>
-
-          {error && (
-            <p className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-              {error}
-            </p>
-          )}
 
           <Button
             type="submit"
